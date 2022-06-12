@@ -58,4 +58,14 @@ class SinglyLinkedList {
 
     return nodeToReturn;
   }
+
+  shift() {
+    if (!this.head) return;
+
+    const oldHead = this.head;
+    this.head = this.head.next;
+    this.length--;
+
+    return oldHead;
+  }
 }
