@@ -51,18 +51,21 @@ class BinarySearchTree {
 
   find(valueToFind: number) {
     let currentNode = this.root;
+    if (currentNode === null) return false;
 
-    while (true) {
-      if (currentNode?.value === valueToFind) {
-        return true;
-      }
+    let hasFoundValue = false;
+
+    while (currentNode && !hasFoundValue) {
       if (currentNode && currentNode.value < valueToFind) {
-        currentNode = currentNode?.left;
-      }
-
-      if (currentNode && currentNode.value > valueToFind) {
-        currentNode = currentNode?.right;
+        currentNode = currentNode.left;
+      } else if (currentNode && currentNode.value > valueToFind) {
+        currentNode = currentNode.right;
+      } else {
+        hasFoundValue = true;
       }
     }
+    if (!hasFoundValue) return;
+
+    return currentNode;
   }
 }
