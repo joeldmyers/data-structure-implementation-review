@@ -81,4 +81,18 @@ class SinglyLinkedList {
       return this;
     }
   }
+
+  get(indexOfItemToFind: number) {
+    if (indexOfItemToFind >= this.length || indexOfItemToFind < 0) return;
+
+    let counter = 1;
+    let currentNode = this.head;
+
+    while (currentNode && counter !== indexOfItemToFind) {
+      currentNode = currentNode?.next;
+      counter++;
+    }
+
+    return currentNode;
+  }
 }
