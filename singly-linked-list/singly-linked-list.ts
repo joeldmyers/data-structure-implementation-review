@@ -34,4 +34,28 @@ class SinglyLinkedList {
 
     this.length++;
   }
+
+  pop() {
+    if (!this.head) return;
+
+    const nodeToReturn = this.tail;
+
+    let currentNode = this.head;
+    let newTail = currentNode;
+
+    while (currentNode?.next) {
+      newTail = currentNode.next;
+    }
+
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return nodeToReturn;
+  }
 }
