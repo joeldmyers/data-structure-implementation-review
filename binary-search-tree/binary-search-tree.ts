@@ -148,4 +148,6 @@ class BinarySearchTree {
  *
  * DFS is better for wide squat trees (a lot wider than deep)
  * BFS is better for tall narrow trees (a lot deeper than wide)
+ *
+ * InOrder is good for Binary Search Trees. This keeps the order :)
  */
