@@ -106,9 +106,9 @@ class SinglyLinkedList {
   }
 
   insert(positionIndex: number, value: any) {
-    if (positionIndex < 0 || positionIndex > this.length) return false;
+    if (positionIndex < 0 || positionIndex >= this.length) return false;
 
-    if (positionIndex === this.length) {
+    if (positionIndex === this.length - 1) {
       this.push(value);
     }
 
@@ -128,11 +128,11 @@ class SinglyLinkedList {
   }
 
   remove(indexOfItemToRemove: number) {
-    if (indexOfItemToRemove < 0 || indexOfItemToRemove > this.length) {
+    if (indexOfItemToRemove < 0 || indexOfItemToRemove >= this.length) {
       return false;
     }
 
-    if (indexOfItemToRemove === this.length) {
+    if (indexOfItemToRemove === this.length - 1) {
       this.pop();
       return true;
     }
@@ -147,6 +147,25 @@ class SinglyLinkedList {
 
     if (itemBeforeItemToRemove) {
       itemBeforeItemToRemove.next = itemBeforeItemToRemove.next?.next || null;
+    }
+    if (itemToRemove) {
+      itemToRemove.next = null;
+      return itemToRemove;
+    }
+  }
+
+  reverseInPlace() {
+    let currentNode = this.head;
+    this.head = this.tail;
+    this.tail = currentNode;
+    let previous = null;
+    let nextNode;
+
+    while (currentNode) {
+      nextNode = currentNode.next;
+      currentNode.next = previous;
+      previous = currentNode;
+      currentNode = nextNode;
     }
   }
 }
