@@ -20,7 +20,6 @@ class SinglyLinkedList {
   }
 
   push(val: number) {
-    // create a new node and assign it to the head.
     const newNode = new LinkedListNode(val);
 
     if (this.head === null) {
