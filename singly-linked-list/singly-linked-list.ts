@@ -104,4 +104,49 @@ class SinglyLinkedList {
     }
     return false;
   }
+
+  insert(positionIndex: number, value: any) {
+    if (positionIndex < 0 || positionIndex > this.length) return false;
+
+    if (positionIndex === this.length) {
+      this.push(value);
+    }
+
+    if (positionIndex === 0) {
+      this.unshift(value);
+    }
+
+    const newNode = new LinkedListNode(value);
+
+    const itemToInsertAfter = this.get(positionIndex - 1);
+    if (itemToInsertAfter) {
+      const oldItemNext = itemToInsertAfter?.next;
+      itemToInsertAfter.next = newNode;
+      newNode.next = oldItemNext;
+      this.length++;
+    }
+  }
+
+  remove(indexOfItemToRemove: number) {
+    if (indexOfItemToRemove < 0 || indexOfItemToRemove > this.length) {
+      return false;
+    }
+
+    if (indexOfItemToRemove === this.length) {
+      this.pop();
+      return true;
+    }
+
+    if (indexOfItemToRemove === 0) {
+      this.shift();
+      return true;
+    }
+
+    const itemBeforeItemToRemove = this.get(indexOfItemToRemove - 1);
+    const itemToRemove = itemBeforeItemToRemove?.next;
+
+    if (itemBeforeItemToRemove) {
+      itemBeforeItemToRemove.next = itemBeforeItemToRemove.next?.next || null;
+    }
+  }
 }
