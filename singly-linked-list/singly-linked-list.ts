@@ -1,6 +1,6 @@
-class LinkedListNode {
+class SinglyLinkedListNode {
   val: any;
-  next: LinkedListNode | null;
+  next: SinglyLinkedListNode | null;
 
   constructor(val: any) {
     this.val = val;
@@ -9,8 +9,8 @@ class LinkedListNode {
 }
 
 class SinglyLinkedList {
-  head: LinkedListNode | null;
-  tail: LinkedListNode | null;
+  head: SinglyLinkedListNode | null;
+  tail: SinglyLinkedListNode | null;
   length: number;
 
   constructor() {
@@ -20,7 +20,7 @@ class SinglyLinkedList {
   }
 
   push(val: any) {
-    const newNode = new LinkedListNode(val);
+    const newNode = new SinglyLinkedListNode(val);
 
     if (this.head === null) {
       this.head = newNode;
@@ -70,7 +70,7 @@ class SinglyLinkedList {
   }
 
   unshift(val: any) {
-    const newNode = new LinkedListNode(val);
+    const newNode = new SinglyLinkedListNode(val);
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
@@ -116,7 +116,7 @@ class SinglyLinkedList {
       this.unshift(value);
     }
 
-    const newNode = new LinkedListNode(value);
+    const newNode = new SinglyLinkedListNode(value);
 
     const itemToInsertAfter = this.get(positionIndex - 1);
     if (itemToInsertAfter) {
