@@ -1,8 +1,8 @@
 class LinkedListNode {
-  val: number | string;
+  val: any;
   next: LinkedListNode | null;
 
-  constructor(val: number) {
+  constructor(val: any) {
     this.val = val;
     this.next = null;
   }
@@ -19,7 +19,7 @@ class SinglyLinkedList {
     this.length = 0;
   }
 
-  push(val: number) {
+  push(val: any) {
     const newNode = new LinkedListNode(val);
 
     if (this.head === null) {
@@ -67,5 +67,17 @@ class SinglyLinkedList {
     this.length--;
 
     return oldHead;
+  }
+
+  unshift(val: any) {
+    const newNode = new LinkedListNode(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
   }
 }
