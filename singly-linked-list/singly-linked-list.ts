@@ -95,4 +95,13 @@ class SinglyLinkedList {
 
     return currentNode;
   }
+
+  set(indexOfItemToUpdate: number, valueToUpdate: any) {
+    const foundNode = this.get(indexOfItemToUpdate);
+    if (foundNode) {
+      foundNode.val = valueToUpdate;
+      return true;
+    }
+    return false;
+  }
 }
