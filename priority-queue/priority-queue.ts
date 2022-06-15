@@ -5,6 +5,7 @@ type PriorityQueueNode = {
   priority: number;
   value: string;
 };
+
 class PriorityQueue {
   values: PriorityQueueNode[];
 
