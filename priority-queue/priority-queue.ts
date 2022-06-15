@@ -40,15 +40,13 @@ class PriorityQueue {
         }
       }
     }
-
-    // take node and compare to parent. if > parent, swap.
   }
 
   dequeue() {
     // take the first value in it.
     // replace with the most recently added (item at the end)
     // sink this down, swapping with larger of two children until it's in the right place.
-    const max = this.values[0];
+    const highestPriorityItem = this.values[0];
 
     const lastItem = this.values.pop();
     if (lastItem) {
@@ -85,6 +83,6 @@ class PriorityQueue {
       }
     }
 
-    return max;
+    return highestPriorityItem;
   }
 }
