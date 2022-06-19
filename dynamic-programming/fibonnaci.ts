@@ -1,3 +1,5 @@
+// roughly O(n) time complexity
+
 const fib = (n: number, memo: Record<number, number> = {}): number => {
   if (memo[n]) return memo[n];
   if (n <= 2) return 1;
