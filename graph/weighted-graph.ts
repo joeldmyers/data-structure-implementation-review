@@ -1,3 +1,30 @@
+/**
+ * NOTES! Because there are a lot of things to do here. There are two main parts: setup and iterating over all nodes.
+ *
+ * SETUP:
+ * 1. This method takes a starting vertex and an ending vertex
+ * 2. In the method, create an object, called distances. Set each key to be each vertex in
+ * the adjacency list, with a value of Infinity, EXCEPT the starting vertex, which should have a value of 0.
+ * 3. Add each vertex with a priority of infinity to the priority queue, EXCEPT the starting vertex,
+ * which should have a priority of 0.
+ * 4. Create another object called previous and set each key to be every vertex in the adjacency list, with a value of null.
+ *
+ * ITERATING:
+ *
+ * 1. Start looping (while loop) as long as there are nodes in the priority queue.
+ * 2. Within that, dequeue a vertex from the priority queue.
+ * 3. If that vertex is the same as the end vertex we're going for, we're done
+ * - We will need to go backwards starting from the current vertex we're looking at, through the
+ * previous object we set up above, and create the "path". We'll need to add the first node to it and then
+ * reverse it and we can return this value.
+ * 4. Otherwise, loop through each value in the adjacency list at that vertex.
+ * 5. Calculate the distance to that vertex from the starting vertex.
+ * 6. If the distance is less than what is currently stored in our distances object:
+ * - update distances object with new lower distance
+ * - update the previous object to contain that vertex
+ * - enqueue the vertex with the total distance from the start node.
+ */
+
 const util = require("util");
 
 type GraphNode = { node: string; weight: number };
