@@ -107,6 +107,7 @@ class WeightedGraph {
 }
 
 class SimplePriorityQueue {
+  // this is inefficient(n log n) and we should use the binary heap version instead.
   values: SimpleQueueNode[];
 
   constructor() {
