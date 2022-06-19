@@ -33,4 +33,43 @@ class Graph {
 
     delete this.adjacencyList[vertex];
   }
+
+  depthFirstTraversalRecursive(vertex: string | null) {
+    const result: string[] = [];
+    const visited: Record<string, boolean> = {};
+
+    const traverse = (vertex: string | null) => {
+      if (!vertex) return;
+      visited[vertex] = true;
+      result.push(vertex);
+
+      for (const currentVertex of this.adjacencyList[vertex]) {
+        if (!visited[currentVertex]) {
+          traverse(currentVertex);
+        }
+      }
+    };
+
+    traverse(vertex);
+
+    return result;
+  }
 }
+
+const g = new Graph();
+
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("E", "F");
+
+g.depthFirstTraversalRecursive("A");
