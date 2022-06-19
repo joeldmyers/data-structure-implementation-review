@@ -34,7 +34,7 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
-  depthFirstTraversalRecursive(vertex: string | null) {
+  dfsRecursive(vertex: string | null) {
     const result: string[] = [];
     const visited: Record<string, boolean> = {};
 
@@ -43,14 +43,35 @@ class Graph {
       visited[vertex] = true;
       result.push(vertex);
 
-      for (const currentVertex of this.adjacencyList[vertex]) {
-        if (!visited[currentVertex]) {
-          traverse(currentVertex);
+      for (const neighbor of this.adjacencyList[vertex]) {
+        if (!visited[neighbor]) {
+          traverse(neighbor);
         }
       }
     };
 
     traverse(vertex);
+
+    return result;
+  }
+
+  dfsIterative(vertex: string) {
+    const visited: Record<string, boolean> = {};
+    const stack = [];
+    const result = [];
+    stack.push(vertex);
+
+    while (stack.length) {
+      const currentVertex = stack.pop();
+      if (currentVertex && !visited[currentVertex]) {
+        result.push(currentVertex);
+        visited[currentVertex] = true;
+
+        for (const neighbor of this.adjacencyList[currentVertex]) {
+          stack.push(neighbor);
+        }
+      }
+    }
 
     return result;
   }
@@ -72,4 +93,4 @@ g.addEdge("C", "E");
 g.addEdge("D", "E");
 g.addEdge("E", "F");
 
-g.depthFirstTraversalRecursive("A");
+g.dfsIterative("A");
