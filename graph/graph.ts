@@ -75,6 +75,30 @@ class Graph {
 
     return result;
   }
+
+  bfsIterative(vertex: string) {
+    const visited: Record<string, boolean> = {};
+    const queue = [vertex];
+    const result = [];
+    let currentVertex;
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+      result.push(currentVertex);
+      if (currentVertex) visited[currentVertex] = true;
+
+      if (currentVertex) {
+        for (const neighbor of this.adjacencyList[currentVertex]) {
+          if (!visited[currentVertex]) {
+            queue.push(currentVertex);
+            visited[currentVertex] = true;
+          }
+        }
+      }
+    }
+
+    return result;
+  }
 }
 
 const g = new Graph();
