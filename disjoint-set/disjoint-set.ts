@@ -27,7 +27,8 @@
  * For quick find, we store the root node instead of the parent node to speed up finding.
  */
 
-class DisjointSet {
+// quick find, slow union
+class DisjointSetQuickFind {
   root: number[];
 
   // size is number of vertices
@@ -61,6 +62,39 @@ class DisjointSet {
   }
 
   isConnected(x: number, y: number): boolean {
+    return this.find(x) === this.find(y);
+  }
+}
+
+// quick union, slow find. This is generally preferred.
+class DisjointSetQuickUnion {
+  root: number[];
+
+  constructor(size: number) {
+    this.root = [];
+    for (let i = 0; i < size; i++) {
+      this.root[i] = i;
+    }
+  }
+
+  // here we have to traverse.
+  find(x: number) {
+    while (x !== this.root[x]) {
+      x = this.root[x];
+    }
+    return x;
+  }
+
+  union(x: number, y: number) {
+    const rootX = this.root[x];
+    const rootY = this.root[y];
+
+    if (rootX !== rootY) {
+      this.root[rootY] = rootX;
+    }
+  }
+
+  isConnected(x: number, y: number) {
     return this.find(x) === this.find(y);
   }
 }
