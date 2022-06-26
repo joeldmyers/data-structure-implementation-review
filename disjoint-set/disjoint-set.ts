@@ -99,3 +99,48 @@ class DisjointSetQuickUnion {
     return this.find(x) === this.find(y);
   }
 }
+
+class DisjointSetQuickUnionWithRankOptimization {
+  root: number[];
+  rank: number[];
+
+  constructor(size: number) {
+    this.root = [];
+    this.rank = [];
+
+    for (let i = 0; i < size; i++) {
+      this.root[i] = i;
+      // initialize rank to one for all roots since they start with a height of 1
+      this.rank[i] = 1;
+    }
+  }
+
+  // find the root of this number
+  findRoot(x: number) {
+    while (x !== this.root[x]) {
+      x = this.root[x];
+    }
+    return x;
+  }
+
+  union(x: number, y: number) {
+    const rootX = this.findRoot(x);
+    const rootY = this.findRoot(y);
+
+    if (rootX !== rootY) {
+      if (this.rank[rootX] > this.rank[rootY]) {
+        this.root[rootY] = rootX;
+      } else if (this.rank[rootX] < this.rank[rootY]) {
+        this.root[rootX] = rootY;
+      } else {
+        // they have the same rank
+        this.root[rootY] = rootX;
+        this.rank[rootX] += 1;
+      }
+    }
+  }
+
+  isConnected(x: number, y: number) {
+    return this.findRoot(x) === this.findRoot(y);
+  }
+}
