@@ -25,6 +25,8 @@
  * There are two ways to do this - quick find and quick union.
  *
  * For quick find, we store the root node instead of the parent node to speed up finding.
+ *
+ * There are further optimizations. The most optimal is the last one and that's the one that should be memorized.
  */
 
 // quick find, slow union
@@ -146,7 +148,7 @@ class DisjointSetQuickUnionWithRankOptimization {
 }
 
 /**
- * This is the most optimized of all of these.
+ * This is the most optimized of all of these. This is the one that should be memorized ****
  */
 class DisjointSetQuickUnionWithRankOptimizationAndFindOptimization {
   root: number[];
