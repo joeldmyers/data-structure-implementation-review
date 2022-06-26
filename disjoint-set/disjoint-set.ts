@@ -4,7 +4,7 @@
  *
  * This can help see if two nodes are connected in a network, for ex.
  *
- * implementing using array, with INDEX representing the value of the VERTEX,
+ * It's implemented using array, with INDEX representing the value of the VERTEX,
  *
  * and the VALUE of the array at that index representing the parent node.
  *
@@ -67,6 +67,7 @@ class DisjointSetQuickFind {
 }
 
 // quick union, slow find. This is generally preferred.
+
 class DisjointSetQuickUnion {
   root: number[];
 
