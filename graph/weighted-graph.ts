@@ -55,6 +55,7 @@ class WeightedGraph {
 
     // build up initial state - iterate over adjacency list
     // set up data
+    // whatever
     for (let vertex in this.adjacencyList) {
       if (vertex === startingVertex) {
         distances[vertex] = 0;
